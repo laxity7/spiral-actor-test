@@ -21,17 +21,17 @@ final class HomeController
      */
     use PrototypeTrait;
 
-#[Route(route: '/', name: 'index')]
-public function index(AuthContextInterface $authContext): string
-{
-    $actor = $authContext->getActor();
+    #[Route(route: '/', name: 'index')]
+    public function index(AuthContextInterface $authContext): string
+    {
+        $actor = $authContext->getActor();
 
-    if ($actor) {
-        return 'Hello, ' . $actor->get('name');
+        if ($actor) {
+            return 'Hello, ' . $actor->get('name');
+        }
+
+        return 'Not logged in';
     }
-
-    return 'Not logged in';
-}
 
     /**
      * Example of exception page.
